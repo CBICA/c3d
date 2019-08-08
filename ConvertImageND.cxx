@@ -130,14 +130,14 @@
 #include <itkImageToImageFilter.h>
 
 // Documentation manual
-#include "Documentation.h"
+//#include "Documentation.h"
 
 // Markdown documentation string generated at compile-time
 // this looks a little odd, but works - the include file contains raw bytes
-unsigned char c3d_md[] = {
-  #include "markdown_docs.h"
-  0x00 
-};
+// unsigned char c3d_md[] = {
+//   #include "markdown_docs.h"
+//   0x00 
+// };
 
 using namespace itksys;
 
@@ -358,7 +358,7 @@ ImageConverter<TPixel,VDim>
   m_Param = new ParameterType();
 
   // Documentation initially NULL to not waste time parsing it
-  m_Documentation = NULL;
+  // m_Documentation = NULL;
 
   // Create an interpolator
   m_Interpolation = "linear";
@@ -376,67 +376,67 @@ ImageConverter<TPixel,VDim>
 ::~ImageConverter()
 {
   delete m_Param;
-  if(m_Documentation)
-    delete m_Documentation;
+  // if(m_Documentation)
+  //   delete m_Documentation;
 }
 
 
 
 
-template<class TPixel, unsigned int VDim>
-void
-ImageConverter<TPixel, VDim>
-::PrintCommandListing(std::ostream &out)
-{
-  if(!m_Documentation)
-    m_Documentation = new Documentation(c3d_md);
+// template<class TPixel, unsigned int VDim>
+// void
+// ImageConverter<TPixel, VDim>
+// ::PrintCommandListing(std::ostream &out)
+// {
+//   // if(!m_Documentation)
+//   //   m_Documentation = new Documentation(c3d_md);
 
-  // Print the automatically generated command listing
-  m_Documentation->PrintCommandListing(out);
+//   // // Print the automatically generated command listing
+//   // m_Documentation->PrintCommandListing(out);
 
-  // Print additional information on getting help
-  out << "Getting help:" << std::endl;
+//   // Print additional information on getting help
+//   out << "Getting help:" << std::endl;
 
-  out << "    " 
-    << std::setw(32) << std::left 
-    << "-h"
-    << ": List commands" << std::endl;
+//   out << "    " 
+//     << std::setw(32) << std::left 
+//     << "-h"
+//     << ": List commands" << std::endl;
 
-  out << "    " 
-    << std::setw(32) << std::left 
-    << "-h command"
-    << ": Print help on command (e.g. -h add)" << std::endl;
+//   out << "    " 
+//     << std::setw(32) << std::left 
+//     << "-h command"
+//     << ": Print help on command (e.g. -h add)" << std::endl;
 
-  out << "    " 
-    << std::setw(32) << std::left 
-    << "-manual"
-    << ": Print complete reference manual" << std::endl;
-}
+//   out << "    " 
+//     << std::setw(32) << std::left 
+//     << "-manual"
+//     << ": Print complete reference manual" << std::endl;
+// }
 
-template<class TPixel, unsigned int VDim>
-void
-ImageConverter<TPixel, VDim>
-::PrintCommandHelp(std::ostream &out, const char *command)
-{
-  if(!m_Documentation)
-    m_Documentation = new Documentation(c3d_md);
+// template<class TPixel, unsigned int VDim>
+// void
+// ImageConverter<TPixel, VDim>
+// ::PrintCommandHelp(std::ostream &out, const char *command)
+// {
+//   if(!m_Documentation)
+//     m_Documentation = new Documentation(c3d_md);
 
-  if(!m_Documentation->PrintCommandHelp(out, command))
-    {
-    out << "No help available for command " << command << std::endl;
-    }
-}
+//   if(!m_Documentation->PrintCommandHelp(out, command))
+//     {
+//     out << "No help available for command " << command << std::endl;
+//     }
+// }
 
-template<class TPixel, unsigned int VDim>
-void
-ImageConverter<TPixel, VDim>
-::PrintManual(std::ostream &out)
-{
-  if(!m_Documentation)
-    m_Documentation = new Documentation(c3d_md);
+// template<class TPixel, unsigned int VDim>
+// void
+// ImageConverter<TPixel, VDim>
+// ::PrintManual(std::ostream &out)
+// {
+//   if(!m_Documentation)
+//     m_Documentation = new Documentation(c3d_md);
 
-  m_Documentation->PrintManual(out);
-}
+//   m_Documentation->PrintManual(out);
+// }
 
 template<class TPixel, unsigned int VDim>
 int
