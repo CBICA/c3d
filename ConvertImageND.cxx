@@ -838,12 +838,12 @@ ImageConverter<TPixel, VDim>
     {
     if(argc > 1 && argv[1][0] != '-')
       {
-      PrintCommandHelp(std::cout, argv[1]);
+      //PrintCommandHelp(std::cout, argv[1]);
       return 1;
       }
     else
       {
-      PrintCommandListing(std::cout);
+      //PrintCommandListing(std::cout);
       return 0;
       }
     }
@@ -1040,7 +1040,7 @@ ImageConverter<TPixel, VDim>
   // No else if here because of a windows compiler error (blocks nested too deeply)
   if (cmd == "-manual")
     {
-    this->PrintManual(std::cout);
+    //this->PrintManual(std::cout);
     return 0;
     }
 
