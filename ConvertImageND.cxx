@@ -2621,7 +2621,7 @@ ImageConverter<TPixel, VDim>
 #if _WIN32
   vec[0] = '\0';
 #else
-  delete[] vec; // this cause
+  delete[] vec; // this cause error on windows
 #endif
   
   return idx;
